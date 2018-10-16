@@ -38,21 +38,19 @@ export default class Command {
         sFile: arr[5],
         ext: arr[6]
       };
-      if (/(\/|\\)(app|irx)(\/|\\)/.test(filePath.fsPath())) {
-        let matches = /(\/|\\)(app|e2e)(\/|\\)([a-z]{3})(\/|\\?)/.exec(
+      if (/(\/|\\\\)(app|irx)(\/|\\\\)/.test(filePath.fsPath())) {
+        let matches = /(\/|\\\\)(app|e2e)(\/|\\)([a-z]{3})(\/|\\\\?)/.exec(
           filePath.fsPath()
         );
-        if(matches && matches.length >= 5){
+        if (matches && matches.length >= 5) {
           opts.app = matches[4];
         }
       }
+      if (script.indexOf("--app") >= 0 && !opts.app) {
+        script = script.replace("--app=${app}", "");
+      }
 
       for (const key in opts) {
-        if(key === 'app' && !opts[key])
-        {
-          script = script.replace('--app=${app}', '');
-        }
-
         script = script.replace(
           "${" + key + "}",
           Path.unifiedSeparator(Path.wrapWhiteSpace((opts[key] || "").trim()))
