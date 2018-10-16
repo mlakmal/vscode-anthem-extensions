@@ -1,0 +1,15 @@
+{
+    "command.unitTest.singleFileDebugFast": "Debug unit test in fast mode wihtout coverage",
+    "command.unitTest.singleFileDebugFastCoverage": "Debug unit test in fast mode with coverage",
+    "command.unitTest.singleFileFull": "Run unit test in full mode",
+    "command.unitTest.folderDebugFast": "Debug all unit tests in fast mode without coverage",
+    "command.unitTest.folderDebugFastCoverage": "Debug all unit tests in fast mode with coverage",
+    "command.unitTest.folderFull": "Run all unit test in full mode",
+    "command.bddTest.singleFileDebugFast": "Debug feature test fast mode",
+    "command.bddTest.singleFileFull": "Run feature test in full mode",
+    "command.fetchTests": "Fetch Jira Xray Tests",
+    "command.uploadTestResults": "Upload Cucumber Test Results",
+    "command.unitTest.allFilesFull": "Run all unit tests for this application",
+    "command.unitTest.allFilesDebugFast": "Debug all unit tests in fast mode without coverage for this application",
+    "command.unitTest.allFilesDebugFastCoverage": "Debug all unit tests in fast mode with coverage for this application"
+}

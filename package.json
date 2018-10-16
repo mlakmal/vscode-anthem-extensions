@@ -1,0 +1,258 @@
+{
+  "name": "vscode-anthem-extensions",
+  "displayName": "Anthem Extensions",
+  "description": "Supports running unit tests, xray-jira functionality.",
+  "publisher": "Anthem, Inc.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.17.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "execute",
+    "run",
+    "click"
+  ],
+  "main": "out/src/extension.js",
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "publish": "npm run compile && vsce publish"
+  },
+  "dependencies": {
+    "micromatch": "^3.1.10",
+    "cucumber": "5.0.2",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/micromatch": "^3.1.0",
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^7.0.43",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "typescript": "^2.5.2",
+    "vscode": "^1.1.21"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mlakmal/vscode-anthem-extensions#README.md",
+  "bugs": {
+    "url": "https://github.com/mlakmal/vscode-anthem-extensions/issues",
+    "email": "lakmal.molligoda@anthem.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlakmal/vscode-anthem-extensions.git"
+  },
+  "activationEvents": [
+    "onCommand:extension.unitTest.singleFileDebugFast",
+    "onCommand:extension.unitTest.singleFileDebugFastCoverage",
+    "onCommand:extension.unitTest.singleFileFull",
+    "onCommand:extension.unitTest.folderDebugFast",
+    "onCommand:extension.unitTest.folderDebugFastCoverage",
+    "onCommand:extension.unitTest.folderFull",
+    "onCommand:extension.bddTest.singleFileDebugFast",
+    "onCommand:extension.bddTest.singleFileFull",
+    "onCommand:extension.fetchTests",
+    "onCommand:extension.uploadTestResults",
+    "onCommand:extension.unitTest.allFilesDebugFast",
+    "onCommand:extension.unitTest.allFilesDebugFastCoverage",
+    "onCommand:extension.unitTest.allFilesFull"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "title": "%command.unitTest.singleFileDebugFast%",
+        "command": "extension.unitTest.singleFileDebugFast",
+        "category": "UnitTest"
+      },
+      {
+        "title": "%command.unitTest.singleFileDebugFastCoverage%",
+        "command": "extension.unitTest.singleFileDebugFastCoverage",
+        "category": "UnitTest"
+      },
+      {
+        "title": "%command.unitTest.singleFileFull%",
+        "command": "extension.unitTest.singleFileFull",
+        "category": "UnitTest"
+      },
+      {
+        "title": "%command.unitTest.folderDebugFast%",
+        "command": "extension.unitTest.folderDebugFast",
+        "category": "UnitTest"
+      },
+      {
+        "title": "%command.unitTest.folderDebugFastCoverage%",
+        "command": "extension.unitTest.folderDebugFastCoverage",
+        "category": "UnitTest"
+      },
+      {
+        "title": "%command.unitTest.folderFull%",
+        "command": "extension.unitTest.folderFull",
+        "category": "UnitTest"
+      },
+      {
+        "title": "%command.bddTest.singleFileDebugFast%",
+        "command": "extension.bddTest.singleFileDebugFast",
+        "category": "BddTest"
+      },
+      {
+        "title": "%command.bddTest.singleFileFull%",
+        "command": "extension.bddTest.singleFileFull",
+        "category": "BddTest"
+      },
+      {
+        "title": "%command.fetchTests%",
+        "command": "extension.fetchTests",
+        "category": "Anthem Extensions"
+      },
+      {
+        "title": "%command.uploadTestResults%",
+        "command": "extension.uploadTestResults",
+        "category": "Anthem Extensions"
+      },
+      {
+        "title": "%command.unitTest.allFilesDebugFast%",
+        "command": "extension.unitTest.allFilesDebugFast",
+        "category": "Anthem Extensions"
+      },
+      {
+        "title": "%command.unitTest.allFilesDebugFastCoverage%",
+        "command": "extension.unitTest.allFilesDebugFastCoverage",
+        "category": "Anthem Extensions"
+      },
+      {
+        "title": "%command.unitTest.allFilesFull%",
+        "command": "extension.unitTest.allFilesFull",
+        "category": "Anthem Extensions"
+      }
+    ],
+    "menus": {
+      "commandPalette": [],
+      "explorer/context": [
+        {
+          "command": "extension.unitTest.singleFileDebugFast",
+          "when": "resourceFilename =~ /\\.spec\\.ts$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@1"
+        },
+        {
+          "command": "extension.unitTest.singleFileDebugFastCoverage",
+          "when": "resourceFilename =~ /\\.spec\\.ts$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@2"
+        },
+        {
+          "command": "extension.unitTest.singleFileFull",
+          "when": "resourceFilename =~ /\\.spec\\.ts$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@3"
+        },
+        {
+          "command": "extension.unitTest.folderDebugFast",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z0-9\\-]{4,20})$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@1"
+        },
+        {
+          "command": "extension.unitTest.folderDebugFastCoverage",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z0-9\\-]{4,20})$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@2"
+        },
+        {
+          "command": "extension.unitTest.folderFull",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z0-9\\-]{4,20})$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@3"
+        },
+        {
+          "command": "extension.bddTest.singleFileDebugFast",
+          "when": "resourceExtname == .feature && config.anthem.bddTest.enabled",
+          "group": "anthem@4"
+        },
+        {
+          "command": "extension.bddTest.singleFileFull",
+          "when": "resourceExtname == .feature && config.anthem.bddTest.enabled",
+          "group": "anthem@5"
+        },
+        {
+          "command": "extension.fetchTests",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /features/ && config.anthem.bddTest.enabled",
+          "group": "anthem@6"
+        },
+        {
+          "command": "extension.uploadTestResults",
+          "when": "resourceFilename =~ /cucumber_report\\.json$/ && config.anthem.bddTest.enabled",
+          "group": "anthem@7"
+        },
+        {
+          "command": "extension.unitTest.allFilesDebugFast",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z]{3})$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@8"
+        },
+        {
+          "command": "extension.unitTest.allFilesDebugFastCoverage",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z]{3})$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@8"
+        },
+        {
+          "command": "extension.unitTest.allFilesFull",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z]{3})$/ && config.anthem.unitTest.enabled",
+          "group": "anthem@8"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Anthem Extensions",
+      "properties": {
+        "anthem": {
+          "type": "object",
+          "default": {
+            "jira": {
+              "domain": "https://jira.anthem.com",
+              "username": "",
+              "password": "",
+              "customFieldMap": {
+                "testType": "customfield_14120",
+                "cucumberTestType": "customfield_14121",
+                "cucumberScenario": "customfield_14122",
+                "sprints": "customfield_11224",
+                "testSetKeys": "customfield_14126",
+                "testPlanKeys": "customfield_14726",
+                "preConditions": "customfield_14127",
+                "preConType": "customfield_14129",
+                "conditions": "customfield_14130",
+                "revision": "customfield_14136",
+                "testEnvironment": "customfield_14725",
+                "itTeam": "customfield_12479"
+              }
+            },
+            "newWindow": {
+              "enable": false,
+              "command": ""
+            },
+            "unitTest": {
+              "enabled": true,
+              "singleFileDebugFast": "gulp test --fast --debug --file=${lFile} --app=${app}",
+              "singleFileDebugFastCoverage": "gulp test --coverage=true --fast --debug --file=${lFile} --app=${app}",
+              "singleFileFull": "gulp test --coverage=true --file=${lFile} --app=${app}",
+              "folderDebugFast": "gulp test --fast --debug --folder=${rPath} --app=${app}",
+              "folderDebugFastCoverage": "gulp test --coverage=true --fast --debug --folder=${rPath} --app=${app}",
+              "folderFull": "gulp test --coverage=true --folder=${rPath} --app=${app}",
+              "allFilesDebugFast": "gulp test --fast --debug --app=${app}",
+              "allFilesDebugFastCoverage": "gulp test --fast --debug --coverage=true --app=${app}",
+              "allFilesFull": "gulp test --coverage=true --app=${app}"
+            },
+            "bddTest": {
+              "enabled": true,
+              "singleFileDebugFast": "npm test --fast --debug --file=${lFile} --app=${app}",
+              "singleFileFull": "npm test --file=${lFile} --app=${app}",
+              "allFilesDebugFast": "npm test --fast --debug --app=${app}",
+              "allFilesFull": "npm test --app=${app}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
