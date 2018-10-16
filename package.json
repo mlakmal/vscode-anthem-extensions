@@ -4,7 +4,7 @@
   "description": "Supports running unit tests, xray-jira functionality.",
   "publisher": "AnthemInc",
   "author": "Lakmal Molligoda",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.17.0"
   },
@@ -61,6 +61,8 @@
     "onCommand:extension.unitTest.folderFull",
     "onCommand:extension.bddTest.singleFileDebugFast",
     "onCommand:extension.bddTest.singleFileFull",
+    "onCommand:extension.bddTest.allFilesDebugFast",
+    "onCommand:extension.bddTest.allFilesFull",
     "onCommand:extension.fetchTests",
     "onCommand:extension.uploadTestResults",
     "onCommand:extension.unitTest.allFilesDebugFast",
@@ -107,6 +109,16 @@
       {
         "title": "%command.bddTest.singleFileFull%",
         "command": "extension.bddTest.singleFileFull",
+        "category": "BddTest"
+      },
+      {
+        "title": "%command.bddTest.allFilesDebugFast%",
+        "command": "extension.bddTest.allFilesDebugFast",
+        "category": "BddTest"
+      },
+      {
+        "title": "%command.bddTest.allFilesFull%",
+        "command": "extension.bddTest.allFilesFull",
         "category": "BddTest"
       },
       {
@@ -179,6 +191,16 @@
           "group": "anthem@5"
         },
         {
+          "command": "extension.bddTest.allFilesDebugFast",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z0-9\\-]{3})$/ && config.anthem.bddTest.enabled",
+          "group": "anthem@4"
+        },
+        {
+          "command": "extension.bddTest.allFilesFull",
+          "when": "explorerResourceIsFolder && resourceFilename =~ /^([a-z0-9\\-]{3})$/ && config.anthem.bddTest.enabled",
+          "group": "anthem@5"
+        },
+        {
           "command": "extension.fetchTests",
           "when": "explorerResourceIsFolder && resourceFilename =~ /features/ && config.anthem.bddTest.enabled",
           "group": "anthem@6"
@@ -213,7 +235,7 @@
           "type": "object",
           "default": {
             "jira": {
-              "domain": "https://jira.anthem.com",
+              "domain": "https://jira.company.com",
               "username": "",
               "password": "",
               "customFieldMap": {

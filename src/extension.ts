@@ -57,6 +57,14 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand(
       "extension.unitTest.allFilesFull",
       runner.handleUnitTestCommand("unitTest.allFilesFull")
+    ),
+    vscode.commands.registerCommand(
+      "extension.bddTest.allFilesDebugFast",
+      runner.handleBddTestCommand("bddTest.allFilesDebugFast")
+    ),
+    vscode.commands.registerCommand(
+      "extension.bddTest.allFilesFull",
+      runner.handleBddTestCommand("bddTest.allFilesFull")
     )
   ];
 
