@@ -2,8 +2,8 @@
   "name": "vscode-anthem-extensions",
   "displayName": "Anthem Extensions",
   "description": "Supports running unit tests, xray-jira functionality.",
-  "publisher": "Anthem, Inc.",
-  "version": "1.0.0",
+  "publisher": "AnthemInc",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.17.0"
   },
@@ -36,7 +36,8 @@
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "typescript": "^2.5.2",
-    "vscode": "^1.1.21"
+    "vscode": "^1.1.21",
+    "vsce": "1.52.0"
   },
   "license": "MIT",
   "homepage": "https://github.com/mlakmal/vscode-anthem-extensions#README.md",

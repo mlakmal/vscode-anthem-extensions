@@ -1,0 +1,4 @@
+https://marketplace.visualstudio.com/items?itemName=AnthemInc.vscode-anthem-extensions
+
+node_modules/.bin/vsce create-publisher AnthemInc
+node_modules/.bin/vsce publish -p token
