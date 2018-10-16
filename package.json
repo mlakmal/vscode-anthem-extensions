@@ -12,10 +12,11 @@
     "Other"
   ],
   "keywords": [
-    "execute",
-    "run",
-    "click"
+    "jira",
+    "xray",
+    "anthem"
   ],
+  "icon": "images/logo.png",
   "main": "out/src/extension.js",
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
