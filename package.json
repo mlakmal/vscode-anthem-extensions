@@ -29,7 +29,7 @@
     "micromatch": "^3.1.10",
     "cucumber": "5.0.2",
     "request": "^2.88.0",
-    "xray-jira-utility": "0.0.1"
+    "xray-jira-utility": "0.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",

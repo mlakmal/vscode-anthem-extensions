@@ -38,12 +38,12 @@ export default class Command {
         sFile: arr[5],
         ext: arr[6]
       };
-      if (filePath.fsPath().indexOf("/app/") >= 0 || filePath.fsPath().indexOf("/e2e/") >= 0) {
-        let matches = /\/(app|e2e)\/([a-z]{3})(\/?)/.exec(
+      if (/(\/|\\)(app|irx)(\/|\\)/.test(filePath.fsPath())) {
+        let matches = /(\/|\\)(app|e2e)(\/|\\)([a-z]{3})(\/|\\?)/.exec(
           filePath.fsPath()
         );
-        if(matches && matches.length >= 3){
-          opts.app = matches[2];
+        if(matches && matches.length >= 5){
+          opts.app = matches[4];
         }
       }
 
