@@ -90,5 +90,8 @@ Below username/password will be used to authenticate with jira instance when fet
 
 #### BDD testing Single File
 ![preview](https://github.com/mlakmal/vscode-anthem-extensions/raw/master/images/bdd-file.gif)
-#### Unit testing application folder
+#### BDD testing application folder
 ![preview](https://github.com/mlakmal/vscode-anthem-extensions/raw/master/images/bdd-app.gif)
+
+### Fetch cucumber feature files for JIRA Xray TestPlan id
+![preview](https://github.com/mlakmal/vscode-anthem-extensions/raw/master/images/bdd-fetch.gif)
