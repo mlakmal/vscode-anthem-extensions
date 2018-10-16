@@ -8,9 +8,7 @@ import Command from "./Command";
 import Terminal from "./common/Terminal";
 import Path from "./common/Path";
 import { format } from "./util/formatter";
-import { FetchIssues } from "./jira-xray-utility/fetchIssues";
-import { JiraCustomFields } from "./jira-xray-utility/jiraCustomFields";
-import { UploadResult } from "./jira-xray-utility/uploadResult";
+import { FetchIssues, JiraCustomFields, UploadResult } from "xray-jira-utility";
 import * as fs from "fs";
 
 export default class Runner {

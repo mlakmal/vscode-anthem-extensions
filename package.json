@@ -3,7 +3,8 @@
   "displayName": "Anthem Extensions",
   "description": "Supports running unit tests, xray-jira functionality.",
   "publisher": "AnthemInc",
-  "version": "0.0.1",
+  "author": "Lakmal Molligoda",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.17.0"
   },
@@ -26,7 +27,8 @@
   "dependencies": {
     "micromatch": "^3.1.10",
     "cucumber": "5.0.2",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "xray-jira-utility": "0.0.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",
