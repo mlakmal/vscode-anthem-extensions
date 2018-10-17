@@ -1,7 +1,7 @@
 {
   "name": "vscode-anthem-extensions",
   "displayName": "Anthem Extensions",
-  "description": "Supports running unit tests, xray-jira functionality.",
+  "description": "Supports running unit tests by right clicking folder or spec file, cucumber feature bdd tests, pull cucumber features from xray-jira and upload cucumber results.",
   "publisher": "AnthemInc",
   "author": "Lakmal Molligoda",
   "version": "0.0.5",
@@ -14,7 +14,14 @@
   "keywords": [
     "jira",
     "xray",
-    "anthem"
+    "anthem",
+    "unit",
+    "test",
+    "angular",
+    "nodejs",
+    "cucumber",
+    "protractor",
+    "gherkin"
   ],
   "icon": "images/logo.png",
   "main": "out/src/extension.js",
