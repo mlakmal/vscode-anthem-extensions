@@ -4,7 +4,7 @@
   "description": "Supports running unit tests by right clicking folder or spec file, cucumber feature bdd tests, pull cucumber features from xray-jira and upload cucumber results.",
   "publisher": "AnthemInc",
   "author": "Lakmal Molligoda",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.17.0"
   },
@@ -278,10 +278,15 @@
             },
             "bddTest": {
               "enabled": true,
-              "singleFileDebugFast": "npm test --fast --debug --file=${lFile} --app=${app}",
-              "singleFileFull": "npm test --file=${lFile} --app=${app}",
-              "allFilesDebugFast": "npm test --fast --debug --app=${app}",
-              "allFilesFull": "npm test --app=${app}"
+              "singleFileDebugFast": "npm test --fast --debug --file=${lFile} --app=${app} --env=${env}",
+              "singleFileFull": "npm test --file=${lFile} --app=${app} --env=${env}",
+              "allFilesDebugFast": "npm test --fast --debug --app=${app} --env=${env}",
+              "allFilesFull": "npm test --app=${app} --env=${env}",
+              "testEnvironments": [
+                "dev",
+                "sit",
+                "ci"
+              ]
             }
           }
         }

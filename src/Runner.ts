@@ -44,9 +44,19 @@ export default class Runner {
   }
 
   handleBddTestCommand(subCmd: string) {
-    return (e?) => {
+    return async (e?) => {
       try {
-        this.runCommand(subCmd, this.getFilePath(e));
+        let testEnvironments: any[] = [];
+        (this.config.configs.bddTest.testEnvironments || []).forEach((env) => {
+          testEnvironments.push({ label: env, description: env });
+        });
+        const testEnvironment = await vscode.window.showQuickPick(
+          testEnvironments,
+          {
+            placeHolder: "Test Environment"
+          }
+        );
+        this.runCommand(subCmd, this.getFilePath(e), testEnvironment.label);
       } catch (ex) {
         console.error(ex);
       }
@@ -73,12 +83,12 @@ export default class Runner {
     };
   }
 
-  runCommand(command: string, path: string) {
+  runCommand(command: string, path: string, environment?: string) {
     let fsPath = new Path(path),
       root = Path.wrapWhiteSpace(fsPath.root());
     this.terminal
       //.exec(this.command.cd(root, this.terminal.cwd))
-      .exec(this.command.runCommand(command, fsPath));
+      .exec(this.command.runCommand(command, fsPath, environment));
     this.terminal.cwd = root;
   }
 
@@ -112,11 +122,12 @@ export default class Runner {
       placeHolder: "Jira Issue ID"
     });
 
+    let testEnvironments: any[] = [];
+    (this.config.configs.bddTest.testEnvironments || []).forEach((env) => {
+      testEnvironments.push({ label: env, description: env });
+    });
     const testEnvironment = await vscode.window.showQuickPick(
-      [
-        { label: "dev", description: "dev" },
-        { label: "sit", description: "sit" }
-      ],
+      testEnvironments,
       {
         placeHolder: "Test Environment"
       }
@@ -165,11 +176,12 @@ export default class Runner {
       placeHolder: "Jira ID(s)"
     });
 
+    let testEnvironments: any[] = [];
+    (this.config.configs.bddTest.testEnvironments || []).forEach((env) => {
+      testEnvironments.push({ label: env, description: env });
+    });
     const testEnvironment = await vscode.window.showQuickPick(
-      [
-        { label: "dev", description: "dev" },
-        { label: "sit", description: "sit" }
-      ],
+      testEnvironments,
       {
         placeHolder: "Test Environment"
       }

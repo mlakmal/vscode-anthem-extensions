@@ -9,7 +9,7 @@ export default class Command {
     if (wd !== cwd) return format(this.mapper.changeCwd.command, { cwd });
   }
 
-  runCommand(command: string, filePath: Path): string {
+  runCommand(command: string, filePath: Path, environment?: string): string {
     let cmd = "";
     if (command.indexOf("unitTest") >= 0) {
       cmd = this.mapper.commands.unitTest[command.replace("unitTest.", "")];
@@ -46,8 +46,16 @@ export default class Command {
           opts.app = matches[4];
         }
       }
+      if (environment) {
+        opts.env = environment;
+      }
+
       if (script.indexOf("--app") >= 0 && !opts.app) {
         script = script.replace("--app=${app}", "");
+      }
+
+      if (script.indexOf("--env") >= 0 && !opts.env) {
+        script = script.replace("--env=${env}", "");
       }
 
       for (const key in opts) {
