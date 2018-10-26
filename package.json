@@ -4,7 +4,7 @@
   "description": "Supports running unit tests by right clicking folder or spec file, cucumber feature bdd tests, pull cucumber features from xray-jira and upload cucumber results.",
   "publisher": "AnthemInc",
   "author": "Lakmal Molligoda",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.17.0"
   },
@@ -36,7 +36,7 @@
     "micromatch": "^3.1.10",
     "cucumber": "5.0.2",
     "request": "^2.88.0",
-    "xray-jira-utility": "0.0.2"
+    "xray-jira-utility": "0.0.4"
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",
@@ -257,7 +257,8 @@
                 "conditions": "customfield_14130",
                 "revision": "customfield_14136",
                 "testEnvironment": "customfield_14725",
-                "itTeam": "customfield_12479"
+                "itTeam": "customfield_12479",
+                "executionType": "customfield_17121"
               }
             },
             "newWindow": {
