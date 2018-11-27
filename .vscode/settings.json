@@ -4,8 +4,7 @@
         "node_modules": true,
         "out": false, // set this to true to hide the "out" folder with the compiled JS files
         ".gitattributes": true,
-        "LICENSE.txt": true,
-        "package-lock.json": true,
+        "LICENSE.txt": true
     },
     "search.exclude": {
         "out": true // set this to false to include "out" folder in search results
